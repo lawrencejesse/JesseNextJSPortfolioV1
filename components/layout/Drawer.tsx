@@ -27,9 +27,9 @@ export default function Drawer() {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="fixed inset-0 bg-black/50" onClick={() => setIsOpen(false)} />
-          <div className="fixed inset-y-0 left-0 w-64 bg-background border-r border-gray-800 p-6">
-            <div className="flex flex-col space-y-6">
+          <div className="fixed inset-0 bg-black/80" onClick={() => setIsOpen(false)} />
+          <div className="fixed inset-y-0 left-0 w-64 bg-gray-900/95 backdrop-blur-md border-r border-gray-800 p-6">
+            <div className="flex flex-col space-y-6 bg-gray-900 rounded-lg p-4">
               {menuItems.map((item) => (
                 <Link
                   key={item.path}

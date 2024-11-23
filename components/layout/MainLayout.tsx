@@ -50,7 +50,7 @@ export default function MainLayout({
             </a>
             
             <a 
-              href="https://www.linkedin.com/in/lawrencejessej"
+              href="https://www.linkedin.com/in/jesse-lawrence-37658469/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-primary transition-colors"
