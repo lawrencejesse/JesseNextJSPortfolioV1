@@ -1,7 +1,7 @@
 run = "npm run dev"
-entrypoint = "index.js"
+entrypoint = "pages/index.tsx"
 modules = ["nodejs-20:v9-20231020-a3526c9"]
-hidden = [".config", "package-lock.json", ".next", ".swc"]
+hidden = [".config", "package-lock.json", ".next", ".swc", "out"]
 
 [nix]
 channel = "stable-23_05"
@@ -11,8 +11,8 @@ NEXT_TELEMETRY_DISABLED = "1"
 
 [deployment]
 build = ["npm", "run", "build"]
-run = ["npm", "run", "start"]
-deploymentTarget = "cloudrun"
+deploymentTarget = "static"
+publicDir = "out"
 
 [[ports]]
 localPort = 3000

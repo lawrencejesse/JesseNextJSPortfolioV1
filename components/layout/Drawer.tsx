@@ -5,7 +5,8 @@ import { useRouter } from 'next/router'
 const menuItems = [
   { name: 'Home', path: '/' },
   { name: 'Portfolio Videos', path: '/portfolio-videos' },
-  { name: 'Coding Videos', path: '/coding-videos' },
+  { name: 'Photography', path: '/photography' },
+  { name: 'Coding Projects', path: '/coding-projects' },
   { name: 'GIS Work', path: '/gis' },
   { name: 'Blog', path: '/blog' },
 ]

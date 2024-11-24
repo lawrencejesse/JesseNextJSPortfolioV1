@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
+import Image from "next/image";
 
 const GIS: NextPage = () => {
   return (
@@ -74,6 +75,24 @@ const GIS: NextPage = () => {
                   </svg>
                   View Project on GitHub
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="relative h-64 rounded-lg overflow-hidden">
+            <Image
+              src="/images/gis-map.jpg"
+              alt="GIS Analysis Example"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent">
+              <div className="absolute bottom-0 p-6">
+                <h3 className="text-xl font-semibold text-white">
+                  Spatial Analysis
+                </h3>
               </div>
             </div>
           </div>

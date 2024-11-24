@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
+import Image from "next/image";
 
 interface ProjectData {
   id: string;
@@ -37,42 +38,55 @@ const CodingProjects: NextPage = () => {
       </Head>
 
       <section className="py-12">
-        <h1 className="text-4xl font-bold mb-8 text-white">Coding Projects</h1>
-        
-        <div className="mb-12 text-gray-300 space-y-4">
-          <p>
-            These are my coding projects and experiments. As someone learning to code with AI assistance,
-            I focus on building practical tools that solve real problems while sharing my learning journey.
-          </p>
-        </div>
+        <div className="relative">
+          <div className="absolute -right-20 top-0 w-72 h-72 opacity-20">
+            <Image
+              src="/images/coding-accent.jpg"
+              alt=""
+              fill
+              className="object-cover rounded-full blur-sm"
+            />
+          </div>
+          
+          <h1 className="text-4xl font-bold mb-8 text-white relative z-10">
+            Coding Projects
+          </h1>
+          
+          <div className="mb-12 text-gray-300 space-y-4">
+            <p>
+              These are my coding projects and experiments. As someone learning to code with AI assistance,
+              I focus on building practical tools that solve real problems while sharing my learning journey.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <a
-              key={project.id}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block p-6 rounded-lg bg-gray-800/50 border border-gray-700 hover:border-primary transition-all"
-            >
-              <h3 className="text-2xl font-semibold text-primary mb-3">
-                {project.title}
-              </h3>
-              <p className="text-gray-300 mb-4">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-sm rounded-full bg-gray-700 text-gray-300"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </a>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <a
+                key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-6 rounded-lg bg-gray-800/50 border border-gray-700 hover:border-primary transition-all"
+              >
+                <h3 className="text-2xl font-semibold text-primary mb-3">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 mb-4">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 text-sm rounded-full bg-gray-700 text-gray-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </MainLayout>
