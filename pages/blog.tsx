@@ -1,25 +1,43 @@
-
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
-import MainLayout from '../components/layout/MainLayout'
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import MainLayout from '../components/layout/MainLayout';
+import { zenblog } from '../lib/zenblog';
 
 interface BlogPost {
-  id: string;
   title: string;
   slug: string;
-  publishedAt: string;
+  published_at: string;
   excerpt?: string;
+  cover_image?: string;
+  tags?: string[];
+  category?: {
+    name: string;
+    slug: string;
+  };
 }
 
-export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+interface BlogProps {
+  posts: BlogPost[];
+}
 
-  useEffect(() => {
-    fetch('/api/blog-posts')
-      .then(res => res.json())
-      .then(data => setPosts(data))
-      .catch(err => console.error('Error fetching posts:', err));
-  }, []);
+export default function Blog({ posts }: BlogProps) {
+  console.log('Posts received in component:', posts);
+  
+  const blogPosts = Array.isArray(posts) ? posts : [];
+  
+  const formatDate = (dateString: string) => {
+    try {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Date unavailable';
+    }
+  };
 
   return (
     <MainLayout>
@@ -32,8 +50,12 @@ export default function Blog() {
           Blog
         </h1>
         <div className="grid gap-8">
-          {posts.map((post) => (
-            <article key={post.id} className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
+          {blogPosts.map((post) => (
+            <Link 
+              href={`/blog/${post.slug}`} 
+              key={post.slug}
+              className="p-6 rounded-lg bg-gray-800/50 border border-gray-700 hover:border-blue-500/50 transition-all"
+            >
               <h2 className="text-2xl font-semibold text-blue-400 mb-2">
                 {post.title}
               </h2>
@@ -41,12 +63,37 @@ export default function Blog() {
                 <p className="text-gray-300 mb-4">{post.excerpt}</p>
               )}
               <div className="text-sm text-gray-400">
-                Posted on {new Date(post.publishedAt).toLocaleDateString()}
+                Posted on {formatDate(post.published_at)}
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
     </MainLayout>
-  )
+  );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    console.log('ZENBLOG_BLOG_ID:', process.env.ZENBLOG_BLOG_ID);
+    
+    const response = await zenblog.posts.list();
+    console.log('Zenblog raw response:', response);
+    
+    const posts = response.data || [];
+    console.log('Processed posts:', posts);
+    
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    console.error('Failed to fetch blog posts:', error);
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
+};

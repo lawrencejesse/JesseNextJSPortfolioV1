@@ -1,13 +1,12 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
 
 export default function Footer() {
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState('');
   
   useEffect(() => {
-    setYear(new Date().getFullYear());
+    setYear(new Date().getFullYear().toString());
   }, []);
 
   return (
