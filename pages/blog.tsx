@@ -1,7 +1,26 @@
+
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import MainLayout from '../components/layout/MainLayout'
 
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt?: string;
+}
+
 export default function Blog() {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    fetch('/api/blog-posts')
+      .then(res => res.json())
+      .then(data => setPosts(data))
+      .catch(err => console.error('Error fetching posts:', err));
+  }, []);
+
   return (
     <MainLayout>
       <Head>
@@ -13,20 +32,21 @@ export default function Blog() {
           Blog
         </h1>
         <div className="grid gap-8">
-          {/* Example blog post card */}
-          <article className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
-            <h2 className="text-2xl font-semibold text-blue-400 mb-2">
-              Example Blog Post
-            </h2>
-            <p className="text-gray-300 mb-4">
-              This is a preview of the blog post content...
-            </p>
-            <div className="text-sm text-gray-400">
-              Posted on January 1, 2024
-            </div>
-          </article>
+          {posts.map((post) => (
+            <article key={post.id} className="p-6 rounded-lg bg-gray-800/50 border border-gray-700">
+              <h2 className="text-2xl font-semibold text-blue-400 mb-2">
+                {post.title}
+              </h2>
+              {post.excerpt && (
+                <p className="text-gray-300 mb-4">{post.excerpt}</p>
+              )}
+              <div className="text-sm text-gray-400">
+                Posted on {new Date(post.publishedAt).toLocaleDateString()}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
     </MainLayout>
   )
-} 
+}
