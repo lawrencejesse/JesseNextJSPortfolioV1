@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import MainLayout from '../../components/layout/MainLayout';
 import { zenblog } from '../../lib/zenblog';
+import Image from 'next/image';
 
 interface BlogPost {
   title: string;
@@ -31,7 +32,19 @@ export default function BlogPost({ post }: BlogPostProps) {
       </Head>
       
       <article className="py-12 max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent mb-4">
+        {post.cover_image && (
+          <div className="relative w-full aspect-[21/9] mb-8 rounded-lg overflow-hidden">
+            <Image
+              src={post.cover_image}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+        
+        <h1 className="text-4xl font-bold text-white mb-6 leading-relaxed">
           {post.title}
         </h1>
         
@@ -72,6 +85,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
+    if (!params?.slug) {
+      throw new Error('Slug parameter is missing');
+    }
+    
     const post = await zenblog.posts.get({ slug: params.slug as string });
     return {
       props: {
