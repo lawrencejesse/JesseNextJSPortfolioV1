@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 const menuItems = [
   { name: 'Home', path: '/' },
   { name: 'Portfolio Videos', path: '/portfolio-videos' },
-  { name: 'Photography', path: '/photography' },
   { name: 'Coding Projects', path: '/coding-projects' },
   { name: 'GIS Work', path: '/gis' },
   { name: 'Blog', path: '/blog' },
@@ -19,7 +18,7 @@ export default function Drawer() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden p-2 hover:bg-gray-800 rounded"
+        className="p-2 hover:bg-gray-800 rounded"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -27,7 +26,7 @@ export default function Drawer() {
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50">
           <div className="fixed inset-0 bg-black/80" onClick={() => setIsOpen(false)} />
           <div className="fixed inset-y-0 left-0 w-64 bg-gray-900/95 backdrop-blur-md border-r border-gray-800 p-6">
             <div className="flex flex-col space-y-6 bg-gray-900 rounded-lg p-4">

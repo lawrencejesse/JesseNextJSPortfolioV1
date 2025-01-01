@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
-import Image from "next/image";
+import ImageWithFallback from '../components/common/ImageWithFallback';
 
 interface VideoData {
   id: string;
@@ -55,10 +55,13 @@ const PortfolioVideos: NextPage = () => {
       </Head>
 
       <section className="py-12">
-        <h1 className="text-4xl font-bold mb-8 text-white">Portfolio Videos</h1>
+        <h1 className="text-4xl font-bold mb-8 text-white">
+          Portfolio Videos
+        </h1>
         
         <div className="mb-12 text-gray-300 space-y-4">
-          <p>I&apos;ve always had a passion for capturing and editing video of life on the ranch and in the rodeo arena. During the pandemic, this was re-awakened as I wanted
+          <p>
+            I&apos;ve always had a passion for capturing and editing video of life on the ranch and in the rodeo arena. During the pandemic, this was re-awakened as I wanted
             to be able to showcase the hardships our ranch was facing and the resilience of our family. I bought a GoPro to use in the arena, to capture some unique angles and 
             perspectives. I started to use my drone for video instead of just mapping. It all came together with some editing in DaVinci Resolve. Now I&apos;ve 
             put together a lot of content, and I&apos;m sharing some of my favourites here.
@@ -73,7 +76,7 @@ const PortfolioVideos: NextPage = () => {
               onClick={() => setSelectedVideo(video)}
             >
               <div className="relative aspect-video overflow-hidden rounded-lg">
-                <Image
+                <ImageWithFallback
                   src={video.thumbnail || ''}
                   alt={video.title}
                   fill
@@ -94,6 +97,33 @@ const PortfolioVideos: NextPage = () => {
               </h3>
             </div>
           ))}
+        </div>
+
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative aspect-video rounded-lg overflow-hidden">
+            <ImageWithFallback
+              src="/images/PrimeTimeBoys.JPG"
+              alt="Prime Time Boys"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="relative aspect-[3/4] rounded-lg overflow-hidden">
+            <ImageWithFallback
+              src="/images/family_2024.jpg"
+              alt="Family 2024"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="relative aspect-[3/4] rounded-lg overflow-hidden">
+            <ImageWithFallback
+              src="/images/jesse_brandy_wedding1.jpg"
+              alt="Jesse and Brandy Wedding"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
         </div>
 
         {/* Video Modal */}

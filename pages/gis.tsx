@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import MainLayout from "../components/layout/MainLayout";
-import Image from "next/image";
+import ImageWithFallback from '../components/common/ImageWithFallback';
 
 const GIS: NextPage = () => {
   return (
@@ -12,7 +12,9 @@ const GIS: NextPage = () => {
       </Head>
 
       <section className="py-12">
-        <h1 className="text-4xl font-bold mb-8 text-white">GIS Projects</h1>
+        <h1 className="text-4xl font-bold mb-8 text-white">
+          GIS Work
+        </h1>
         
         <div className="mb-12 text-gray-300 space-y-4">
           <p>
@@ -80,21 +82,30 @@ const GIS: NextPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="relative h-64 rounded-lg overflow-hidden">
-            <Image
-              src="/images/gis-map.jpg"
-              alt="GIS Analysis Example"
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative aspect-video rounded-lg overflow-hidden">
+            <ImageWithFallback
+              src="/images/Mare_and_Colt.jpg"
+              alt="Mare and Colt"
               fill
-              className="object-cover"
+              className="object-cover hover:scale-105 transition-transform duration-300"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent">
-              <div className="absolute bottom-0 p-6">
-                <h3 className="text-xl font-semibold text-white">
-                  Spatial Analysis
-                </h3>
-              </div>
-            </div>
+          </div>
+          <div className="relative aspect-video rounded-lg overflow-hidden">
+            <ImageWithFallback
+              src="/images/MaresSnowStorm.jpg"
+              alt="Mares in Snow"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="relative aspect-video rounded-lg overflow-hidden">
+            <ImageWithFallback
+              src="/images/PrimeTimeBoys.JPG"
+              alt="Prime Time Boys"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
         </div>
       </section>
