@@ -1,0 +1,33 @@
+Warning: Text content did not match. Server: &quot;2025&quot; Client: &quot;2024&quot;
+    at p
+    at footer
+    at Footer
+    at div
+    at H (webpack-internal:///./node_modules/next-themes/dist/index.mjs:7:1017)
+    at J (webpack-internal:///./node_modules/next-themes/dist/index.mjs:7:799)
+    at MainLayout (webpack-internal:///./components/layout/MainLayout.tsx:15:11)
+    at Home
+    at MyApp (webpack-internal:///./pages/_app.tsx:9:11)
+    at PathnameContextProviderAdapter (webpack-internal:///./node_modules/next/dist/shared/lib/router/adapters.js:80:11)
+    at ErrorBoundary (webpack-internal:///./node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:6864)
+    at ReactDevOverlay (webpack-internal:///./node_modules/next/dist/compiled/@next/react-dev-overlay/dist/client.js:26:9247)
+    at Container (webpack-internal:///./node_modules/next/dist/client/index.js:80:1)
+    at AppContainer (webpack-internal:///./node_modules/next/dist/client/index.js:188:11)
+    at Root (webpack-internal:///./node_modules/next/dist/client/index.js:412:11) 
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+Warning: An error occurred during hydration. The server HTML was replaced with client content in &lt;div&gt;. 
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+Attempting to load image: /images/MaresSnowStorm.jpg
+Attempting to load image: /images/family_2024.jpg
+Attempting to load image: /images/PrimeTimeBoys.JPG
+Text content does not match server-rendered HTML.
+
+Warning: Text content did not match. Server: "2025" Client: "2024"
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
+[HMR] connected
+Image with src "/images/family_2024.jpg" was detected as the Largest Contentful Paint (LCP). Please add the "priority" property if this image is above the fold.
+Read more: https://nextjs.org/docs/api-reference/next/image#priority
