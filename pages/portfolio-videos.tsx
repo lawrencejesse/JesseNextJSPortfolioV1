@@ -13,6 +13,12 @@ interface VideoData {
 
 const videos: VideoData[] = [
   {
+    id: "Aa_XxVL8CJY",
+    title: "Sunrise Stampede",
+    embedUrl: "https://www.youtube.com/embed/Aa_XxVL8CJY",
+    thumbnail: `https://img.youtube.com/vi/Aa_XxVL8CJY/hqdefault.jpg`,
+  },
+  {
     id: "a2pylEZ7MEU",
     title: "90 Years of Rodeo - Stew Lawrence and the Moose Mountain Pro Rodeo",
     embedUrl: "https://www.youtube.com/embed/a2pylEZ7MEU",

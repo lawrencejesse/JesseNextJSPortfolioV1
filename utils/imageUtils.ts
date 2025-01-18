@@ -4,6 +4,7 @@ export const validateImagePath = (path: string): string => {
     'MaresSnowStorm.jpg',
     'family_2024.jpg',
     'PrimeTimeBoys.JPG',
+    'jesse_brandy_wedding1.jpg',
     'edinburgh_castle_cannon.jpg',
     'Mare_and_Colt.jpg',
     'jesselawrence.jpg'

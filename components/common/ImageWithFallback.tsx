@@ -20,7 +20,7 @@ const ImageWithFallback = ({
       {...rest}
       src={imgSrc}
       alt={alt}
-      onError={(e) => {
+      onError={() => {
         console.error('Image load error for:', src);
         setImgSrc(fallbackSrc);
       }}
