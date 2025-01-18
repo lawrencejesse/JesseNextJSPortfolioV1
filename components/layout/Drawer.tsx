@@ -6,7 +6,7 @@ const menuItems = [
   { name: 'Home', path: '/' },
   { name: 'Portfolio Videos', path: '/portfolio-videos' },
   { name: 'Coding Projects', path: '/coding-projects' },
-  { name: 'GIS Work', path: '/gis' },
+  { name: 'GIS Services', path: '/gis' },
   { name: 'Blog', path: '/blog' },
 ]
 
