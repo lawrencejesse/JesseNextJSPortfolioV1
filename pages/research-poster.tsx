@@ -3,37 +3,17 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import RippleEffect from "../components/effects/RippleEffect";
 
 const ResearchPoster: NextPage = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
-    <div className="parallax-container">
+    <div className="min-h-screen relative">
       <Head>
         <title>AI Tools for Non-Coders - Research Poster</title>
         <meta name="description" content="Research poster on AI Tools for Non-Coders and how LLMs and Coding can Empower Environmental Professionals" />
       </Head>
 
-      {mounted && <RippleEffect />}
-
-      {/* Navigation Button */}
-      <Link 
-        href="/"
-        className="fixed top-4 right-4 z-50 px-4 py-2 bg-gray-900/80 hover:bg-gray-800 text-white rounded-full border border-gray-700 hover:border-primary transition-all duration-300 flex items-center space-x-2"
-      >
-        <span>Visit Full Portfolio</span>
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </Link>
-
-      {/* Parallax Background */}
-      <div className="parallax-bg">
+      {/* Background Image */}
+      <div className="fixed inset-0 z-0">
         <Image
           src="/images/8-bit forrest.jpg"
           alt="8-bit forest background"
@@ -42,10 +22,22 @@ const ResearchPoster: NextPage = () => {
           priority
           quality={100}
         />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Poster Content */}
-      <div className="parallax-content">
+      {/* Navigation Button */}
+      <Link 
+        href="/"
+        className="fixed top-4 right-4 z-50 px-4 py-2 bg-gray-900/80 hover:bg-gray-800 text-white rounded-full border border-gray-700 hover:border-primary transition-all duration-300 flex items-center space-x-2"
+      >
+        <span>Jesse Lawrence Portfolio</span>
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </Link>
+
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen">
         <div className="container mx-auto px-4 py-8 max-w-6xl text-white">
           <div className="space-y-8">
             <h1 className="text-5xl font-bold text-center bg-gradient-to-br from-white via-blue-300 to-blue-800 bg-clip-text text-transparent">
@@ -57,7 +49,7 @@ const ResearchPoster: NextPage = () => {
             </h2>
 
             {/* Catchphrase */}
-            <p className="text-3xl font-bold text-center italic text-primary animate-pulse">
+            <p className="text-3xl font-bold text-center italic text-[#FF6F61] animate-pulse">
               You Can Just Do Things
             </p>
 
@@ -99,53 +91,76 @@ const ResearchPoster: NextPage = () => {
             <div className="bg-gray-900/80 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-4 text-blue-400">Tools</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-start space-x-3">
-                  <Image
-                    src="/openai.png"
-                    alt="OpenAI Logo"
-                    width={24}
-                    height={24}
-                    className="mt-1"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-blue-300 mb-2">ChatGPT</h4>
-                    <p className="text-gray-300">General purpose - best for brainstorming, advanced reasoning and troubleshooting and iterating code.</p>
-                  </div>
+                <div>
+                  <a 
+                    href="https://chat.openai.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group inline-flex items-center space-x-3 cursor-pointer mb-2 relative z-20"
+                  >
+                    <Image
+                      src="/images/openai.svg"
+                      alt="OpenAI Logo"
+                      width={24}
+                      height={24}
+                      className="mt-1 invert"
+                    />
+                    <h4 className="font-semibold text-blue-300 group-hover:text-blue-400">ChatGPT</h4>
+                  </a>
+                  <p className="text-gray-300">General purpose - best for brainstorming, advanced reasoning and troubleshooting and iterating code.</p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Image
-                    src="/replit.svg"
-                    alt="Replit Logo"
-                    width={24}
-                    height={24}
-                    className="mt-1"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-blue-300 mb-2">Replit</h4>
-                    <p className="text-gray-300">This is where you'll build and deploy your code. All online, with an advanced coding agent. Allows for collaborative editing.</p>
-                  </div>
+
+                <div>
+                  <a 
+                    href="https://replit.com/~" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center space-x-3 cursor-pointer mb-2 relative z-20"
+                  >
+                    <div className="w-6 h-6 mt-1">
+                      <svg width="24" height="24" viewBox="0 0 32 32" className="text-[#F26207]" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M6 5.5C6 4.67157 6.67157 4 7.5 4H14.5C15.3284 4 16 4.67157 16 5.5V12H7.5C6.67157 12 6 11.3284 6 10.5V5.5Z" />
+                        <path fill="currentColor" d="M16 12H24.5C25.3284 12 26 12.6716 26 13.5V18.5C26 19.3284 25.3284 20 24.5 20H16V12Z" />
+                        <path fill="currentColor" d="M6 21.5C6 20.6716 6.67157 20 7.5 20H16V26.5C16 27.3284 15.3284 28 14.5 28H7.5C6.67157 28 6 27.3284 6 26.5V21.5Z" />
+                      </svg>
+                    </div>
+                    <h4 className="font-semibold text-blue-300 group-hover:text-blue-400">Replit</h4>
+                  </a>
+                  <p className="text-gray-300">This is where you'll build and deploy your code. All online, with an advanced coding agent. Allows for collaborative editing.</p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Image
-                    src="/githubblack.png"
-                    alt="GitHub Logo"
-                    width={24}
-                    height={24}
-                    className="mt-1 invert"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-blue-300 mb-2">GitHub</h4>
-                    <p className="text-gray-300">Online repository - save and backup your work - allows for easy sharing and a goldmine for finding open-source projects to fork.</p>
-                  </div>
+
+                <div>
+                  <a 
+                    href="https://github.com/lawrencejesse" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center space-x-3 cursor-pointer mb-2 relative z-20"
+                  >
+                    <Image
+                      src="/images/github-original-wordmark.svg"
+                      alt="GitHub Logo"
+                      width={24}
+                      height={24}
+                      className="mt-1 invert"
+                    />
+                    <h4 className="font-semibold text-blue-300 group-hover:text-blue-400">GitHub</h4>
+                  </a>
+                  <p className="text-gray-300">Online repository - save and backup your work - allows for easy sharing and a goldmine for finding open-source projects to fork.</p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 mt-1 flex items-center justify-center bg-blue-500 rounded">
-                    <span className="text-xs font-bold text-white">λ</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-300 mb-2">Llamacoder</h4>
-                    <p className="text-gray-300">Free site to build simple apps you can share and demo in real-time. Try it now!</p>
-                  </div>
+
+                <div>
+                  <a 
+                    href="https://llamacoder.together.ai/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center space-x-3 cursor-pointer mb-2 relative z-20"
+                  >
+                    <div className="w-6 h-6 mt-1 flex items-center justify-center bg-blue-500 rounded">
+                      <span className="text-xs font-bold text-white">λ</span>
+                    </div>
+                    <h4 className="font-semibold text-blue-300 group-hover:text-blue-400">Llamacoder</h4>
+                  </a>
+                  <p className="text-gray-300">Free site to build simple apps you can share and demo in real-time. Try it now!</p>
                 </div>
               </div>
             </div>
@@ -164,7 +179,16 @@ const ResearchPoster: NextPage = () => {
                   <span className="font-semibold">Satellite NDVI Temporal Assessment</span>
                 </li>
                 <li>
-                  <span className="font-semibold">Detailed Salinity Analytical Visualizations</span> - <a href="https://salinity-data-viz-jesselawrence.replit.app/" className="text-blue-400 hover:underline">https://salinity-data-viz-jesselawrence.replit.app/</a> - upload your raw analytical data and explore how the various parameters (EC, SAR, Cl, Na etc. change with depth, which are most related and how the sulphate profile changes with depth (i.e. upward or downward groundwater flow)
+                  <span className="font-semibold">Detailed Salinity Analytical Visualizations</span> - 
+                  <a 
+                    href="https://salinity-data-viz-jesselawrence.replit.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 underline relative z-20"
+                  >
+                    salinity-data-viz-jesselawrence.replit.app
+                  </a>
+                  {" "}- upload your raw analytical data and explore how the various parameters (EC, SAR, Cl, Na etc. change with depth, which are most related and how the sulphate profile changes with depth (i.e. upward or downward groundwater flow)
                 </li>
               </ul>
             </div>
@@ -181,13 +205,6 @@ const ResearchPoster: NextPage = () => {
             <div className="mt-8 text-center space-y-2">
               <p className="text-gray-400 italic">"The future is here, its just unevenly distributed" - William Gibson</p>
               <p className="text-gray-400 italic">"There's a way to do it better - find it" - Thomas Edison</p>
-            </div>
-
-            {/* QR Code Section */}
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4 text-blue-400">Interactive Poster</h3>
-              <p className="text-gray-300">See this Poster Online</p>
-              {/* Add your QR code image here */}
             </div>
           </div>
         </div>

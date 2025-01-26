@@ -27,24 +27,32 @@ a {
   transform: translate(-50%, -50%);
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
+  background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.98) 100%);
   opacity: 0;
   z-index: 100;
   pointer-events: none;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  transition: border-radius 2s ease-in-out;
 }
 
 .ripple-effect.animate {
-  animation: ripple 1.5s ease-out forwards;
+  animation: ripple 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes ripple {
   0% {
     transform: translate(-50%, -50%) scale(0);
     opacity: 1;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  50% {
+    opacity: 0.8;
+    border-radius: 50%;
   }
   100% {
-    transform: translate(-50%, -50%) scale(2);
+    transform: translate(-50%, -50%) scale(2.5);
     opacity: 0;
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
   }
 }
 
@@ -80,14 +88,16 @@ a {
   background-image: url('/images/8-bit forrest.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.2;
+  opacity: 0.35;
+  filter: brightness(1.2) saturate(1.2);
 }
 
 .parallax-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.2;
+  opacity: 0.35;
+  filter: brightness(1.2) saturate(1.2);
 }
 
 .parallax-content {
@@ -111,4 +121,11 @@ html {
 
 .parallax-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+/* Add a subtle glow to the content boxes */
+.bg-gray-900\/80 {
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  background: rgba(17, 24, 39, 0.7) !important;
 }
