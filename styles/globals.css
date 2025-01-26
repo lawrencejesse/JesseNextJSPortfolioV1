@@ -18,3 +18,97 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Ripple Effect */
+.ripple-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.ripple-effect.animate {
+  animation: ripple 1.5s ease-out forwards;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Parallax Container */
+.parallax-container {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 8px;
+  background-color: black;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  transform: translateZ(0px) scale(1.8);
+  z-index: -1;
+}
+
+.parallax-bg::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: inherit;
+  background-image: url('/images/8-bit forrest.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+}
+
+.parallax-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.parallax-content {
+  transform-style: preserve-3d;
+  transform: translateZ(2px) scale(0.75);
+  position: relative;
+  padding-bottom: 3rem;
+  min-height: calc(100vh + 100px); /* Ensure content pushes container height */
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+.parallax-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.parallax-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
