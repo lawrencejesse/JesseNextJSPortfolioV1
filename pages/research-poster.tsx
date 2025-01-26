@@ -170,7 +170,16 @@ const ResearchPoster: NextPage = () => {
               <h3 className="text-xl font-semibold mb-4 text-blue-400">Examples</h3>
               <ul className="space-y-4 text-gray-300">
                 <li>
-                  <span className="font-semibold">photoexif-jl.replit.app</span> - Allows the user to upload a folder of photos, and download the photo lat/long, altitude, bearing etc. I use to build my map-based photo logs.
+                  <span className="font-semibold">Photo EXIF Data Extractor</span> - 
+                  <a 
+                    href="https://photoexif-jl.replit.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 hover:text-blue-300 underline relative z-20"
+                  >
+                    photoexif-jl.replit.app
+                  </a>
+                  {" "}- Allows the user to upload a folder of photos, and download the photo lat/long, altitude, bearing etc. I use to build my map-based photo logs.
                 </li>
                 <li>
                   <span className="font-semibold">Green Plant Detection</span> - python script that detects green plants against black soil or dead vegetation.
