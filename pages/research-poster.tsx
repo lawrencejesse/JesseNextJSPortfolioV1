@@ -261,6 +261,23 @@ const ResearchPoster: NextPage = () => {
               </p>
             </div>
 
+            {/* Video Section */}
+            <div className="bg-gray-900/80 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4 text-blue-400">Watch Me Build This Website as a Digital Twin to my Conference Poster</h3>
+              <div className="aspect-video w-full">
+                <iframe
+                  className="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/y8LPUddlGQQ"
+                  title="Building the AI Coding Poster"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-gray-300 mt-4 text-center">
+                Watch how this poster was created using AI-assisted coding
+              </p>
+            </div>
+
             {/* Footer Quotes */}
             <div className="bg-gray-900/80 p-6 rounded-lg text-center space-y-2">
               <h3 className="text-xl font-semibold mb-4 text-blue-400"></h3>
