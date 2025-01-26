@@ -5,12 +5,60 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ResearchPoster: NextPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate minimum loading time for animation
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen relative">
       <Head>
         <title>AI Tools for Non-Coders - Research Poster</title>
         <meta name="description" content="Research poster on AI Tools for Non-Coders and how LLMs and Coding can Empower Environmental Professionals" />
+        <style>{`
+          @keyframes grow {
+            0% {
+              transform: scale(0);
+              opacity: 0;
+            }
+            60% {
+              transform: scale(1.1);
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+          @keyframes fadeOut {
+            to {
+              opacity: 0;
+              visibility: hidden;
+            }
+          }
+          .leaf {
+            animation: grow 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .loading-screen {
+            animation: fadeOut 0.5s forwards;
+            animation-delay: 2.3s;
+          }
+        `}</style>
       </Head>
+
+      {isLoading && (
+        <div className="loading-screen fixed inset-0 z-50 bg-gray-900 flex items-center justify-center">
+          <div className="relative w-20 h-20">
+            <div className="leaf absolute inset-0 border-4 border-green-500 rounded-full" />
+            <div className="leaf absolute inset-0 border-4 border-green-400 rounded-full" style={{ animationDelay: '0.5s' }} />
+            <div className="leaf absolute inset-0 border-4 border-green-300 rounded-full" style={{ animationDelay: '1s' }} />
+          </div>
+        </div>
+      )}
 
       {/* Background Image */}
       <div className="fixed inset-0 z-0">
@@ -40,18 +88,21 @@ const ResearchPoster: NextPage = () => {
       <div className="relative z-10 min-h-screen">
         <div className="container mx-auto px-4 py-8 max-w-6xl text-white">
           <div className="space-y-8">
-            <h1 className="text-5xl font-bold text-center bg-gradient-to-br from-white via-blue-300 to-blue-800 bg-clip-text text-transparent">
-              AI Tools for Non-Coders
-            </h1>
-            
-            <h2 className="text-2xl text-center text-blue-400">
-              How LLMs and Coding can Empower Environmental Professionals
-            </h2>
+            {/* Header Section */}
+            <div className="bg-gray-900/80 p-8 rounded-lg space-y-6">
+              <h1 className="text-5xl font-bold text-center bg-gradient-to-br from-white via-blue-300 to-blue-800 bg-clip-text text-transparent">
+                AI Tools for Non-Coders
+              </h1>
+              
+              <h2 className="text-2xl text-center text-blue-400">
+                How LLMs and Coding can Empower Environmental Professionals
+              </h2>
 
-            {/* Catchphrase */}
-            <p className="text-3xl font-bold text-center italic text-[#FF6F61] animate-pulse">
-              You Can Just Do Things
-            </p>
+              {/* Catchphrase */}
+              <p className="text-3xl font-bold text-center italic text-[#FF6F61] animate-pulse">
+                You Can Just Do Things
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Abstract Section */}
@@ -211,9 +262,10 @@ const ResearchPoster: NextPage = () => {
             </div>
 
             {/* Footer Quotes */}
-            <div className="mt-8 text-center space-y-2">
-              <p className="text-gray-400 italic">"The future is here, its just unevenly distributed" - William Gibson</p>
-              <p className="text-gray-400 italic">"There's a way to do it better - find it" - Thomas Edison</p>
+            <div className="bg-gray-900/80 p-6 rounded-lg text-center space-y-2">
+              <h3 className="text-xl font-semibold mb-4 text-blue-400"></h3>
+              <p className="text-xl-gray-400 italic">"The future is here, its just unevenly distributed" - William Gibson</p>
+              <p className="text-xl-gray-400 italic">"There's a way to do it better - find it" - Thomas Edison</p>
             </div>
           </div>
         </div>

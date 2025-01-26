@@ -7,7 +7,7 @@ const menuItems = [
   { name: 'Portfolio Videos', path: '/portfolio-videos' },
   { name: 'Coding Projects', path: '/coding-projects' },
   { name: 'GIS Services', path: '/gis' },
-  { name: 'Research Poster', path: '/research-poster' },
+  { name: 'AI Coding Poster - NPRRW', path: '/research-poster' },
   { name: 'Blog', path: '/blog' },
 ]
 
