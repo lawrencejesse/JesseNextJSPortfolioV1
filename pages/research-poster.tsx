@@ -6,13 +6,23 @@ import { useEffect, useState } from "react";
 
 const ResearchPoster: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     // Simulate minimum loading time for animation
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
-    return () => clearTimeout(timer);
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -60,17 +70,27 @@ const ResearchPoster: NextPage = () => {
         </div>
       )}
 
-      {/* Background Image */}
-      <div className="fixed inset-0 z-0">
-        <Image
-          src="/images/8-bit forrest.jpg"
-          alt="8-bit forest background"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black/40" />
+      {/* Background Image with Parallax */}
+      <div 
+        className="fixed inset-0 z-0 overflow-hidden"
+        style={{
+          transform: `translateY(${scrollY * 0.10}px)`,
+          transition: 'transform 0.1s ease-out',
+          marginTop: '-70vh',
+          height: '170vh'
+        }}
+      >
+        <div className="absolute inset-0" style={{ transform: 'scale(1.0)' }}>
+          <Image
+            src="/images/8-bit forrest.jpg"
+            alt="8-bit forest background"
+            fill
+            className="object-cover"
+            priority
+            quality={100}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
       </div>
 
       {/* Navigation Button */}
@@ -133,7 +153,7 @@ const ResearchPoster: NextPage = () => {
                   <li>• Collaborate in your org or across the world with open-source code</li>
                   <li>• The future of reclamation and remediation is in better data</li>
                   <li>• High res maps, drones, computer vision and machine learning</li>
-                  <li>• More data, more complexity - coding and AI enable practical utility</li>
+                  <li>• More data = more complexity - coding and AI enable practical utility</li>
                 </ul>
               </div>
             </div>
@@ -218,37 +238,39 @@ const ResearchPoster: NextPage = () => {
 
             {/* Examples Section */}
             <div className="bg-gray-900/80 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-4 text-blue-400">Examples</h3>
+              <h3 className="text-xl font-semibold mb-4 text-blue-400 text-center">&lt;/&gt; Live Examples &lt;/&gt; <span className="text-sm">(made by Jesse)</span></h3>
               <ul className="space-y-4 text-gray-300">
                 <li>
-                  <span className="font-semibold">Photo EXIF Data Extractor</span> - 
-                  <a 
-                    href="https://photoexif-jl.replit.app/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-blue-400 hover:text-blue-300 underline relative z-20"
-                  >
-                    photoexif-jl.replit.app
-                  </a>
-                  {" "}- Allows the user to upload a folder of photos, and download the photo lat/long, altitude, bearing etc. I use to build my map-based photo logs.
-                </li>
-                <li>
-                  <span className="font-semibold">Green Plant Detection</span> - python script that detects green plants against black soil or dead vegetation.
-                </li>
-                <li>
-                  <span className="font-semibold">Satellite NDVI Temporal Assessment</span>
-                </li>
-                <li>
-                  <span className="font-semibold">Detailed Salinity Analytical Visualizations</span> - 
                   <a 
                     href="https://salinity-data-viz-jesselawrence.replit.app/" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-blue-400 hover:text-blue-300 underline relative z-20"
+                    className="font-semibold text-blue-400 hover:text-blue-300 underline relative z-20"
                   >
-                    salinity-data-viz-jesselawrence.replit.app
+                    Detailed Salinity Analytical Visualizations – Demo
                   </a>
-                  {" "}- upload your raw analytical data and explore how the various parameters (EC, SAR, Cl, Na etc. change with depth, which are most related and how the sulphate profile changes with depth (i.e. upward or downward groundwater flow)
+                  {" "}- upload your borehole analytical data and explore how the various parameters (EC, SAR, Cl, Na etc). interact, and get assistance understanding the soil chemistry with AI.
+                </li>
+                <li>
+                  <a 
+                    href="https://demo-ranch-ndvi-jesselawrence.replit.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="font-semibold text-blue-400 hover:text-blue-300 underline relative z-20"
+                  >
+                    Satellite NDVI Temporal Assessment
+                  </a>
+                  {" "}- Rough Demo of how to visualize and interact with NDVI data, as a land manager.
+                </li>
+                <li>
+                  <a 
+                    href="https://jesselawrence.pro/coding-projects" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="font-semibold text-blue-400 hover:text-blue-300 underline relative z-20"
+                  >
+                    Live list of coding projects I'm working on
+                  </a>
                 </li>
               </ul>
             </div>
@@ -256,9 +278,10 @@ const ResearchPoster: NextPage = () => {
             {/* Conclusions Section */}
             <div className="bg-gray-900/80 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-4 text-blue-400">Conclusions</h3>
-              <p className="text-gray-300">
-                The future of environmental work is data-driven, collaborative and powered by accessible tools like AI and Coding. By embracing these technologies today, we unlock new ways to solve challenges, automate workflows, and innovate faster than ever. The tools are here, its up to us to use domain expertise to apply them.
-              </p>
+              <div className="text-gray-300 space-y-4">
+                <p>The future of environmental work is data-driven, collaborative and supercharged with AI and Coding. By embracing these technologies today, we unlock new ways to solve challenges, automate workflows, and innovate faster than ever. The tools are here, there is no manual – combine them with domain expertise to create real impact.</p>
+                <p>Growth comes from collaboration. Exchange ideas, experiment boldly, push boundaries. <strong>The future is accelerating and now is the time to learn and to create.</strong></p>
+              </div>
             </div>
 
             {/* Video Section */}
@@ -281,8 +304,8 @@ const ResearchPoster: NextPage = () => {
             {/* Footer Quotes */}
             <div className="bg-gray-900/80 p-6 rounded-lg text-center space-y-2">
               <h3 className="text-xl font-semibold mb-4 text-blue-400"></h3>
-              <p className="text-xl-gray-400 italic">"The future is here, its just unevenly distributed" - William Gibson</p>
-              <p className="text-xl-gray-400 italic">"There's a way to do it better - find it" - Thomas Edison</p>
+              <p className="text-xl-gray-400">"The future is here, its just unevenly distributed" - William Gibson</p>
+              <p className="text-xl-gray-400">"There's a way to do it better - find it" - Thomas Edison</p>
             </div>
           </div>
         </div>

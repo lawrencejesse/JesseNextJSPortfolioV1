@@ -1,3 +1,4 @@
+/*
 import { useEffect } from 'react';
 
 const RippleEffect = () => {
@@ -21,3 +22,4 @@ const RippleEffect = () => {
 };
 
 export default RippleEffect; 
+*/ 
