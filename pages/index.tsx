@@ -45,7 +45,7 @@ const Home: NextPage = () => {
             </Link>
             
             <Link href="/gis" className="group block p-6 rounded-lg bg-pink-900/20 border border-pink-500/30 hover:border-pink-500 transition-all hover:bg-pink-900/30 hover:transform hover:-translate-y-1">
-              <h2 className="text-2xl font-semibold text-pink-400 mb-2 group-hover:text-pink-300">GIS Services</h2>
+              <h2 className="text-2xl font-semibold text-pink-400 mb-2 group-hover:text-pink-300">GIS Projects</h2>
               <p className="text-gray-300">Some cool examples of how I use GIS to solve problems</p>
             </Link>
             

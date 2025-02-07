@@ -16,13 +16,13 @@ const GIS: NextPage = () => {
   return (
     <MainLayout>
       <Head>
-        <title>GIS Services - Jesse Lawrence</title>
+        <title>GIS Projects - Jesse Lawrence</title>
         <meta name="description" content="Professional GIS services including drone mapping, spatial analysis, and environmental monitoring" />
       </Head>
 
       <section className="py-12">
         <h1 className="text-4xl font-bold mb-8 text-white">
-          GIS Services
+          GIS Projects
         </h1>
         
         <div className="mb-12 text-gray-300 space-y-4">
@@ -127,23 +127,24 @@ const GIS: NextPage = () => {
 
           {/* GIS Project Setup Section */}
           <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-            <h2 className="text-2xl font-semibold text-primary mb-6">GIS Project Setup & Field Integration</h2>
+            <h2 className="text-2xl font-semibold text-primary mb-6">QGIS as the Link from Desktop to Field</h2>
             
             <div className="space-y-6">
               <div className="space-y-4 text-gray-300">
-                <p className="font-semibold text-white">Build a "Digital Twin" of your site</p>
+                <p className="font-semibold text-white">Building a "Digital Twin"</p>
                 <ul className="list-disc list-inside space-y-3 ml-4">
-                  <li>Combine survey boundaries, utility locates, boreholes, well centres etc, with basemaps for a geospatially accurate representation of your site</li>
-                  <li>Groundwater Contours</li>
-                  <li>Add in additional layers:
+                  <li>QGIS is a powerful solution that can combine survey boundaries, utility locates, boreholes, well centres etc, with basemaps for a geospatially accurate representation projects</li>
+                  <li>Add in complexity as needed:
                     <ul className="list-disc list-inside ml-6 mt-2">
                       <li>Drone maps</li>
                       <li>Vegetation health</li>
                       <li>Elevation models</li>
                       <li>Soil conductivity maps (EM38, EM31)</li>
+                      <li>Groundwater Contours</li>
                     </ul>
                   </li>
-                  <li>Push all these maps to your GPS unit (Trimble Handsets, mobile phone etc.)</li>
+                  <li>The desktop experience is only half the story, the real power of QGIS comes with interactive maps and data collection in the field. Although I learned all of this on Trimble Handsets, the future of field work is with MerginMaps.</li>
+                  <li>MerginMaps its built on the same opensource concepts as QGIS, and syncs beautifully with QGIS for a powerful way to interact with your maps and data in the field (https://merginmaps.com/)</li>
                 </ul>
               </div>
             </div>
@@ -155,10 +156,8 @@ const GIS: NextPage = () => {
             
             <div className="space-y-6 text-gray-300">
               <p>
-                Explore custom analysis options for whatever you are trying to solve. If you need to assess crop health on large areas, 
-                identify areas of weak growth, measure if bare areas are growing or shrinking, understanding how topography is affecting 
-                the vegetation on dry or wet years, searching for noxious weeds and creating prescription maps for targeted spraying, 
-                let's see how advanced geospatial analysis can help solve your problem.
+                My passion is in exploring new ways to collect and  analyze geospatial data for a variety of applicaitons. From assessing vegetation health, 
+                mapping bare areas, monitoring crops over multiple years, searching for noxious weeds, or creating prescription maps for targeted spraying, there is a huge potential for geospatial data analysis.
               </p>
 
               <div>
