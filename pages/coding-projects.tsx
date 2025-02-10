@@ -26,7 +26,28 @@ const projects: ProjectData[] = [
     description: "Video series documenting my journey learning Python through 'Automate the Boring Stuff' using AI tools like ChatGPT and Claude. Learning in public while building practical automation scripts.",
     link: "https://www.youtube.com/playlist?list=PLDljNW_Y0BJU_NEzhDgC1fzoIvITeVQi4",
     tags: ["Python", "Automation", "Learning", "AI-Assisted"],
-  }
+  },
+  {
+    id: "salinity-viz",
+    title: "Soil Salinity Data Visualization",
+    description: "Interactive web app for visualizing and analyzing soil salinity data from Phase II ESA borehole samples. Features an AI assistant for in-depth analysis. Built with Python and AI assistance.",
+    link: "https://salinity-data-viz-jesselawrence.replit.app/",
+    tags: ["Python", "Data Viz", "AI", "Environmental"],
+  },
+  {
+    id: "ranch-ndvi",
+    title: "Ranch NDVI Analysis",
+    description: "Demo application showcasing visualization of Sentinel-2 NDVI data to evaluate temporal changes in pasture health. Helps ranchers track vegetation changes over time.",
+    link: "https://demo-ranch-ndvi-jesselawrence.replit.app/",
+    tags: ["Remote Sensing", "GIS", "Agriculture", "Data Viz"],
+  },
+  {
+    id: "gcc-veg",
+    title: "Drone Vegetation Analysis",
+    description: "Python script for analyzing low-altitude drone imagery to assess crop/grass emergence. Uses computer vision to calculate vegetation coverage percentages, enabling creation of vegetation density heatmaps.",
+    link: "https://github.com/lawrencejesse/GCC-Vegetation-Detection",
+    tags: ["Python", "Computer Vision", "Drones", "Agriculture"],
+  },
 ];
 
 const CodingProjects: NextPage = () => {
