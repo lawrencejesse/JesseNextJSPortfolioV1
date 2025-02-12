@@ -197,7 +197,7 @@ const ResearchPoster: NextPage = () => {
                     </div>
                     <h4 className="font-semibold text-blue-300 group-hover:text-blue-400">Replit</h4>
                   </a>
-                  <p className="text-gray-300">This is where you'll build and deploy your code. All online, with an advanced coding agent. Allows for collaborative editing.</p>
+                  <p className="text-gray-300">This is where you'll build and deploy your code. All online, with an advanced coding agent. Allows for collaborative editing. If you want to try replit use this referal code@https://replit.com/refer/JesseLawrence and you will get $10 of credits to build with.</p>
                 </div>
 
                 <div>
